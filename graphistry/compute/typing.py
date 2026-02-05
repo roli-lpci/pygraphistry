@@ -6,7 +6,7 @@ if TYPE_CHECKING:
     DataFrameT = pd.DataFrame
     SeriesT = pd.Series
     IndexT = pd.Index
-    DomainT = pd.Index
+    DomainT = Union[pd.Index, pd.Series]
 else:
     DataFrameT = Any
     SeriesT = Any
