@@ -392,9 +392,9 @@ def hop(self: Plottable,
 
             hop_edges = pairs[pairs[FROM_COL].isin(frontier_ids)]
             cand_nodes = _domain_unique(hop_edges[TO_COL])
-            seed_ids = None
+            seed_ids_domain = None
             if visited_node_ids is None and not return_as_wave_front:
-                seed_ids = _domain_unique(hop_edges[FROM_COL])
+                seed_ids_domain = _domain_unique(hop_edges[FROM_COL])
 
             cand_edges = _domain_unique(hop_edges[EDGE_ID])
 
@@ -402,7 +402,7 @@ def hop(self: Plottable,
                 max_reached_hop = current_hop
 
             if visited_node_ids is None and not return_as_wave_front:
-                visited_node_ids = seed_ids
+                visited_node_ids = seed_ids_domain
 
             new_frontier = _domain_diff(cand_nodes, visited_node_ids)
             if not _domain_is_empty(new_frontier):
