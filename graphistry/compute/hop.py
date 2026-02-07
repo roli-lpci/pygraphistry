@@ -14,7 +14,7 @@ from graphistry.Engine import (
 from graphistry.Plottable import Plottable
 from graphistry.util import setup_logger
 try:
-    from graphistry.otel import otel_traced, otel_detail_enabled
+    from graphistry.otel import otel_traced, otel_detail_enabled  # type: ignore[import-not-found]
 except Exception:  # pragma: no cover - optional dependency
     def otel_traced(*_args: Any, **_kwargs: Any):
         def decorator(func):
@@ -133,10 +133,8 @@ def hop(self: Plottable,
     def _domain_is_empty(domain: Optional[DomainT]) -> bool:
         return domain is None or len(domain) == 0
 
-    def _domain_diff(candidates: Optional[DomainT], visited: Optional[DomainT]) -> Optional[DomainT]:
-        if candidates is None or visited is None:
-            return candidates
-        if len(candidates) == 0 or len(visited) == 0:
+    def _domain_diff(candidates: DomainT, visited: Optional[DomainT]) -> DomainT:
+        if visited is None or len(candidates) == 0 or len(visited) == 0:
             return candidates
         return candidates[~candidates.isin(visited)]
 
