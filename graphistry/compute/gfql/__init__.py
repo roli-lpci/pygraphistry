@@ -25,16 +25,16 @@ __all__ = [
     # Validation classes
     'ValidationIssue',
     'Schema',
-    
+
     # Validation functions
     'validate_syntax',
-    'validate_schema', 
+    'validate_schema',
     'validate_query',
     'extract_schema',
     'extract_schema_from_dataframes',
     'format_validation_errors',
     'suggest_fixes',
-    
+
     # Exceptions
     'GFQLException',
     'GFQLValidationError',
